@@ -32,10 +32,12 @@ window.onload = () => {
       })
       .then(function (data) {
         console.log(data);
-        result.innerHTML = `<p class="h1 fw-bold">${data.name}<p>
+        result.innerHTML = `<p class="title is-2">${data.name}<p>
 							<img src='https://openweathermap.org/img/wn/${data.weather[0].icon}.png' />
-							<p class="h2">${data.weather[0].main}, ${data.weather[0].description}</p>
-							<p class="h1">${Math.round(data.main.temp - 273.15)} ℃<p>`;
+							<p class="title is-3">${data.weather[0].main}, ${
+          data.weather[0].description
+        }</p>
+							<p class="title is-2">${Math.round(data.main.temp - 273.15)} ℃<p>`;
       })
       .catch(function (error) {
         console.warn(error);
