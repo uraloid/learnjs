@@ -13,30 +13,52 @@
   <body>
     <div
       class="container notification is-primary"
-      style="width: 500px; margin-top: 60px"
+      style="width: 550px; margin-top: 60px"
     >
-      <div class="field has-addons">
-        <input
-          type="text"
-          class="input is-primary is-light"
-          id="input"
-          placeholder="Input"
-        />
-        <button type="button" id="button" class="button is-primary is-light">
-          Search
-        </button>
-      </div>
-      <div
-        id="result"
-        style="
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          margin-top: 20px;
-        "
+      <table
+        class="table is-bordered is-striped is-hoverable"
+        style="width: 500px"
       >
-        <p class="title is-3">Input the name of a city</p>
-      </div>
+        <thead>
+          <tr class="is-size-4">
+            <th>№</th>
+            <th>Rating</th>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody class="is-size-4 has-text-centered">
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" id="button" class="button is-primary is-light mr-4">
+        Back</button
+      ><button type="button" id="button" class="button is-primary is-light">
+        Next
+      </button>
     </div>
     <script src="main.js"></script>
   </body>
