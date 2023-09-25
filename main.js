@@ -1,43 +1,63 @@
 window.onload = () => {
-  const input = document.querySelector("#input");
-  const button = document.querySelector("#button");
   const result = document.querySelector("#result");
-  const apiKey = "da79119f59d1111d4d8d918f5dcfdf8e";
+  const buttonBack = document.querySelector("#buttonBack");
+  const buttonNext = document.querySelector("#buttonNext");
 
-  button.addEventListener("click", fetchCity);
+  let coinIndex = 0;
 
-  function fetchCity() {
-    fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${input.value}&appid=${apiKey}`
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        let lat = data[0].lat;
-        let lon = data[0].lon;
-        return fetchWeather(lat, lon);
-      })
-      .catch(function (error) {
-        console.warn(error);
-      });
+  buttonNext.addEventListener("click", nextCoinResults);
+  buttonBack.addEventListener("click", backCoinResults);
+
+  function nextCoinResults() {
+    coinIndex += 5;
+  
+    return fetchCoinStats(coinIndex)
   }
 
-  function fetchWeather(lat, lon) {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
-    )
+  function backCoinResults() {
+    if (coinIndex !== 0) {
+      coinIndex -= 5;
+    }
+    else {
+      coinIndex = 0;
+    }
+
+    return fetchCoinStats(coinIndex)
+  }
+
+  function fetchCoinStats(coinIndex) {
+    fetch(`https://api.coinstats.app/public/v1/coins?limit=100`)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
         console.log(data);
-        result.innerHTML = `<p class="title is-2">${data.name}<p>
-							<img src='https://openweathermap.org/img/wn/${data.weather[0].icon}.png' />
-							<p class="title is-3">${data.weather[0].main}, ${
-          data.weather[0].description
-        }</p>
-							<p class="title is-2">${Math.round(data.main.temp - 273.15)} ℃<p>`;
+        result.innerHTML = 
+                            `<tr>
+                              <td>${data.coins[coinIndex].rank}</td>
+                              <td><img src='${data.coins[coinIndex].icon}' />${data.coins[coinIndex].name} / ${data.coins[coinIndex].symbol}</td>
+                              <td>\$${data.coins[coinIndex].price.toFixed(3)}</td>
+                            </tr>
+                            <tr>
+                              <td>${data.coins[coinIndex+1].rank}</td>
+                              <td><img src='${data.coins[coinIndex+1].icon}' />${data.coins[coinIndex+1].name} / ${data.coins[coinIndex+1].symbol}</td>
+                              <td>\$${data.coins[coinIndex+1].price.toFixed(3)}</td>
+                            </tr>
+                            <tr>
+                              <td>${data.coins[coinIndex+2].rank}</td>
+                              <td><img src='${data.coins[coinIndex+2].icon}' />${data.coins[coinIndex+2].name} / ${data.coins[coinIndex+2].symbol}</td>
+                              <td>\$${data.coins[coinIndex+2].price.toFixed(3)}</td>
+                            </tr>
+                            <tr>
+                              <td>${data.coins[coinIndex+3].rank}</td>
+                              <td><img src='${data.coins[coinIndex+3].icon}' />${data.coins[coinIndex+3].name} / ${data.coins[coinIndex+3].symbol}</td>
+                              <td>\$${data.coins[coinIndex+3].price.toFixed(3)}</td>
+                            </tr>
+                            <tr>
+                              <td>${data.coins[coinIndex+4].rank}</td>
+                              <td><img src='${data.coins[coinIndex+4].icon}' />${data.coins[coinIndex+4].name} / ${data.coins[coinIndex+4].symbol}</td>
+                              <td>\$${data.coins[coinIndex+4].price.toFixed(3)}</td>
+                            </tr>`;
       })
       .catch(function (error) {
         console.warn(error);
