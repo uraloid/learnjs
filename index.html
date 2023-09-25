@@ -9,16 +9,33 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
     <title>learnjs</title>
+
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+       * {
+        font-family: roboto;
+       }
+      #result tr td{
+      }
+      #result img {
+        height: 40px;
+        margin-right: 10px;
+        vertical-align: middle;        
+
+        justify-content: left;
+      }
+   </style>
   </head>
   <body>
     <div
       class="container notification is-primary"
-      style="width: 550px; margin-top: 60px"
+      style="width: 750px; margin-top: 60px"
     >
       <table
         class="table is-bordered is-striped is-hoverable"
         id="table"
-        style="width: 500px"
+        style="width: 700px"
       >
         <thead>
           <tr class="is-size-4">
@@ -28,7 +45,7 @@
           </tr>
         </thead>
 
-        <tbody class="is-size-4 has-text-centered" id="result">
+        <tbody class="is-size-4" id="result">
           <tr>
             <td></td>
             <td></td>
