@@ -2,38 +2,44 @@ window.onload = () => {
   const result = document.querySelector("#result");
   const buttonBack = document.querySelector("#buttonBack");
   const buttonNext = document.querySelector("#buttonNext");
+  const select = document.querySelector("#select");
 
-  let coinIndex = 0;
-  
+  let skip = 0;
+  let limit = 5;
+  fetchCoinStats(skip, limit);
   buttonNext.addEventListener("click", nextCoinResults);
   buttonBack.addEventListener("click", backCoinResults);
+  select.addEventListener("change",(event) => onSelectChange(event));
+
 
   function nextCoinResults() {
-    coinIndex += 5;
+    skip += Number(limit);
     buttonState();
-    return fetchCoinStats(coinIndex)
+    return fetchCoinStats(skip, limit)
   }
 
   function backCoinResults() {
-    if (coinIndex !== 0) {
-      coinIndex -= 5;
+    if (skip !== 0) {
+      skip -= Number(limit);
       buttonState();
     }
     else {
-      coinIndex = 0;
+      skip = 0;
       buttonState();
     }
-    return fetchCoinStats(coinIndex)
+    return fetchCoinStats(skip, limit)
+  }
+
+  function onSelectChange(event) {
+    console.log(event.target.value);
+    limit = event.target.value;
+    fetchCoinStats(skip, limit);
   }
 
   function buttonState() {
-    if (coinIndex === 0) {
+    if (skip === 0) {
       buttonBack.disabled = true;
       buttonNext.disabled = false; 
-    } 
-    else if (coinIndex === 100-5) {
-      buttonBack.disabled = false;
-      buttonNext.disabled = true; 
     }
     else {
       buttonBack.disabled = false;
@@ -42,7 +48,7 @@ window.onload = () => {
   }
 
   function renderCoins(coinsData) {
-    const coinsRows = coinsData.coins.slice(coinIndex, coinIndex + 5).map((coin) => 
+    const coinsRows = coinsData.coins.map((coin) => 
     `
     <tr>
       <td>${coin.rank}</td>
@@ -55,8 +61,8 @@ window.onload = () => {
     return result.innerHTML = coinsRows.join('')
   }
 
-  function fetchCoinStats() {
-    fetch(`https://api.coinstats.app/public/v1/coins?limit=100`)
+  function fetchCoinStats(skip, limit) {
+    fetch(`https://api.coinstats.app/public/v1/coins?skip=${skip}&limit=${limit}`)
     .then(function (response) { return response.json(); })
     .then(function (data) {
       console.log(data);
