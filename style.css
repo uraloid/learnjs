@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0081ce8a;
+}
+
+.container {
+    position: relative;
+    width: 1110px;
+    background-color:#fffdf9 ;
+    padding: 28px 32px;
+    box-shadow:
+        rgba(149, 157, 165, 0.3) -6px -6px 16px,
+        rgba(55,55,55,.04)   -4px -4px .9em,
+        rgba(22,17,26,.06)   -1.5em -.5em .75em .25em #7b7c7d20,
+        inset rgba(255,255 ,255,.5) .075em .075em .15em ;
+    border-radius:12pt;
+    backdrop-filter : blur(.4rem);
+    font-family: 'Roboto', sans-serif;
+}
+.form-additional {
+    text-align: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color:#0081cf35 ;
+    color:black ;
+
+}
+
+tr {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+
+.container h2 {
+    color: #333744 ;
+    text-align:c enter ;
+}
+.container h1 {
+    color: #333744 ;
+    text-align: center ;
+    font-size: 26pt ;
+}
+
+.container div {
+    margin: 20pt;
+}
+input {
+    background-color: #f2f2f2;
+    padding: 12px;
+    margin: 10px;
+}
+select {
+    background-color: #f2f2f2;
+    padding: 12px;
+    margin-right: 10px;
+
+}
+.button {
+    cursor: pointer ;
+    background-color: null ;
+    border: none ;
+    padding: 12px;
+    color: white ;
+    background-color: #0081cf35 ;
+    border-radius: .3rem;
+    color: black;
+    font-weight: 600 ;
+
+}

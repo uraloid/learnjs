@@ -1,0 +1,20 @@
+{
+  "patients": [
+    {
+      "fullName": "Иванов Иван Петрович",
+      "cardNumber": "A12345",
+      "snils": "123-456-789-00",
+      "address": "Ул. Пушкина 25, ",
+      "registrationResidence": "Томск, Россия",
+      "phoneNumber": "+7 (975) 123-4567"
+    },
+    {
+      "fullName": "Ласточкин Алексей Фёдорович",
+      "cardNumber": "A23456",
+      "snils": "123-456-789-00",
+      "address": "Ул. Пушкина 35, ",
+      "registrationResidence": "Томск, Россия",
+      "phoneNumber": "+7 (935) 123-4567"
+    }
+  ]
+}
