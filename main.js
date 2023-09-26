@@ -2,6 +2,7 @@ window.onload = () => {
   const result = document.querySelector("#result");
   const buttonBack = document.querySelector("#buttonBack");
   const buttonNext = document.querySelector("#buttonNext");
+
   let coinIndex = 0;
   
   buttonNext.addEventListener("click", nextCoinResults);
@@ -9,19 +10,36 @@ window.onload = () => {
 
   function nextCoinResults() {
     coinIndex += 5;
+    buttonState();
     return fetchCoinStats(coinIndex)
   }
 
   function backCoinResults() {
     if (coinIndex !== 0) {
       coinIndex -= 5;
+      buttonState();
     }
     else {
       coinIndex = 0;
+      buttonState();
     }
     return fetchCoinStats(coinIndex)
   }
 
+  function buttonState() {
+    if (coinIndex === 0) {
+      buttonBack.disabled = true;
+      buttonNext.disabled = false; 
+    } 
+    else if (coinIndex === 100-5) {
+      buttonBack.disabled = false;
+      buttonNext.disabled = true; 
+    }
+    else {
+      buttonBack.disabled = false;
+      buttonNext.disabled = false;
+    }
+  }
 
   function renderCoins(coinsData) {
     const coinsRows = coinsData.coins.slice(coinIndex, coinIndex + 5).map((coin) => 
@@ -45,8 +63,6 @@ window.onload = () => {
       
       return renderCoins(data)
     })
-    .catch(function (error) {
-      console.warn(error);
-    });
+    .catch(function (error) { console.warn(error); });
   }
 };
