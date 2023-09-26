@@ -2,15 +2,13 @@ window.onload = () => {
   const result = document.querySelector("#result");
   const buttonBack = document.querySelector("#buttonBack");
   const buttonNext = document.querySelector("#buttonNext");
-
   let coinIndex = 0;
-
+  
   buttonNext.addEventListener("click", nextCoinResults);
   buttonBack.addEventListener("click", backCoinResults);
 
   function nextCoinResults() {
     coinIndex += 5;
-  
     return fetchCoinStats(coinIndex)
   }
 
@@ -21,46 +19,34 @@ window.onload = () => {
     else {
       coinIndex = 0;
     }
-
     return fetchCoinStats(coinIndex)
   }
 
-  function fetchCoinStats(coinIndex) {
+
+  function renderCoins(coinsData) {
+    const coinsRows = coinsData.coins.slice(coinIndex, coinIndex + 5).map((coin) => 
+    `
+    <tr>
+      <td>${coin.rank}</td>
+      <td><img src='${coin.icon}' />${coin.name} / ${coin.symbol}</td>
+      <td>\$${coin.price.toFixed(3)}</td>
+    </tr>
+    `
+    );
+
+    return result.innerHTML = coinsRows.join('')
+  }
+
+  function fetchCoinStats() {
     fetch(`https://api.coinstats.app/public/v1/coins?limit=100`)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-        result.innerHTML = 
-                            `<tr>
-                              <td>${data.coins[coinIndex].rank}</td>
-                              <td><img src='${data.coins[coinIndex].icon}' />${data.coins[coinIndex].name} / ${data.coins[coinIndex].symbol}</td>
-                              <td>\$${data.coins[coinIndex].price.toFixed(3)}</td>
-                            </tr>
-                            <tr>
-                              <td>${data.coins[coinIndex+1].rank}</td>
-                              <td><img src='${data.coins[coinIndex+1].icon}' />${data.coins[coinIndex+1].name} / ${data.coins[coinIndex+1].symbol}</td>
-                              <td>\$${data.coins[coinIndex+1].price.toFixed(3)}</td>
-                            </tr>
-                            <tr>
-                              <td>${data.coins[coinIndex+2].rank}</td>
-                              <td><img src='${data.coins[coinIndex+2].icon}' />${data.coins[coinIndex+2].name} / ${data.coins[coinIndex+2].symbol}</td>
-                              <td>\$${data.coins[coinIndex+2].price.toFixed(3)}</td>
-                            </tr>
-                            <tr>
-                              <td>${data.coins[coinIndex+3].rank}</td>
-                              <td><img src='${data.coins[coinIndex+3].icon}' />${data.coins[coinIndex+3].name} / ${data.coins[coinIndex+3].symbol}</td>
-                              <td>\$${data.coins[coinIndex+3].price.toFixed(3)}</td>
-                            </tr>
-                            <tr>
-                              <td>${data.coins[coinIndex+4].rank}</td>
-                              <td><img src='${data.coins[coinIndex+4].icon}' />${data.coins[coinIndex+4].name} / ${data.coins[coinIndex+4].symbol}</td>
-                              <td>\$${data.coins[coinIndex+4].price.toFixed(3)}</td>
-                            </tr>`;
-      })
-      .catch(function (error) {
-        console.warn(error);
-      });
+    .then(function (response) { return response.json(); })
+    .then(function (data) {
+      console.log(data);
+      
+      return renderCoins(data)
+    })
+    .catch(function (error) {
+      console.warn(error);
+    });
   }
 };
