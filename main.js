@@ -45,20 +45,35 @@ window.onload = () => {
   }
 
   function renderPatientData(data) {
-    patientEntry.innerHTML = `<td>${data.fullName}</td>
-                               <td>${data.cardNumber}</td>
-                               <td>${data.snils}</td>
-                               <td>${data.address}</td>
-                               <td>${data.registrationResidence}</td>
-                               <td>${data.phoneNumber}</td>`;
+    const { fullName, cardNumber, snils, address, registrationResidence, phoneNumber, research, } = data;
 
-    const research = data.research[0];
-    researchEntry.innerHTML = `<td>${research.id}</td>
-                               <td>${research.name}</td>
-                               <td>${research.date}</td>
-                               <td>${research.description}</td>
-                               <td>${research.doctor}<td>
-                               <td>${research.result}<td>`;
+    patientEntry.innerHTML = ` <td>${fullName}</td>
+                               <td>${cardNumber}</td>
+                               <td>${snils}</td>
+                               <td>${address}</td>
+                               <td>${registrationResidence}</td>
+                               <td>${phoneNumber}</td>`;
+
+    let researchEntries = "";
+
+    for (let i = 0; i < research.length; i++) {
+      const { id, name, date, description, doctor, result } = research[i];
+      researchEntries += `<tbody><td>${id}</td>
+                            <td>${name}</td>
+                            <td>${date}</td>
+                            <td>${description}</td>
+                            <td>${doctor}</td>
+                            <td>${result}</td></tbody>`;
+    }
+    researchEntry.innerHTML = "";
+    researchEntry.innerHTML += `<table><tr id="headerRow">
+                                <th>Номер</th>
+                                <th>Исследование</th>
+                                <th>Дата</th>
+                                <th>Описание</th>
+                                <th>Врач</th>
+                                <th>Результат</th>
+                                </tr>` + researchEntries;
   }
 
   function fetchPatientData() {

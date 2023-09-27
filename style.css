@@ -24,15 +24,18 @@ body {
   border-radius: 12pt;
   backdrop-filter: blur(0.4rem);
   font-family: "Roboto", sans-serif;
+
 }
 .form-additional {
   text-align: center;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
+
 th,
 td {
   padding: 12px;
@@ -45,11 +48,11 @@ th {
 }
 
 tr {
-  background-color: #a5d9ff;
+  background-color: #a5d9ff; 
 }
 
 tr:hover {
-  background-color: #87cdff;
+  background-color: #87cdff;  
 }
 
 .container h2 {
