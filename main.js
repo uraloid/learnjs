@@ -3,8 +3,13 @@ window.onload = () => {
   const inputTitle = document.querySelector("#inputTitle");
   const inputDate = document.querySelector("#inputDate");
   const inputDescription = document.querySelector("#inputDescription");
+  const inputResult = document.querySelector("#inputResult");
 
   fetchPatientData()
+
+  function renderPatientData(data) {
+    console.log(data)
+  }
 
   function fetchPatientData() {
     fetch( 'patients.json' )
@@ -12,10 +17,11 @@ window.onload = () => {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
+        renderPatientData(data);
       })
       .catch(function (error) {
         console.warn(error);
       });
   }
+
 };
