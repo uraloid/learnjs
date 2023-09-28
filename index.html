@@ -4,7 +4,69 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>learnjs</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>patient research</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1 class="med-title">ГБУ «Городская областная клиническая больница»</h1>
+
+      <select id="patientSelect"></select>
+
+      <div class="patient-data">
+        <table>
+          <tr id="headerRow">
+            <th>ФИО</th>
+            <th>Номер амбулаторной карты</th>
+            <th>СНИЛС</th>
+            <th>Адрес</th>
+            <th>Место регистрации и проживания</th>
+            <th>Номер телефона</th>
+          </tr>
+
+          <tr id="patientEntry"></tr>
+        </table>
+      </div>
+      <div id="researchEntry">
+        <table>
+          <tr id="headerRow">
+            <th>Номер</th>
+            <th>Исследование</th>
+            <th>Дата</th>
+            <th>Описание</th>
+            <th>Врач</th>
+            <th>Результат</th>
+          </tr>
+
+          <tr id="researchEntry"></tr>
+        </table>
+      </div>
+      <div class="form-additional">
+        <h2>Форма дополнения исследования</h2>
+        <br />
+
+        <form action="">
+          <input type="number" placeholder="Номер" id="inputNumber" />
+          <input type="text" placeholder="Название" id="inputTitle" />
+          <input
+            type="date"
+            placeholder="Дата проведения исследования"
+            id="inputDate"
+          />
+          <input type="text" placeholder="Описание" id="inputDescription" />
+
+          <select>
+            <option>Власов В.В.</option>
+            <option>Сабуров А.Д.</option>
+            <option>Власов В.В.</option>
+          </select>
+
+          <input type="text" placeholder="Результат" id="inputResult" />
+
+          <button class="button">Добавить</button>
+        </form>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
 </html>

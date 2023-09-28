@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5fa8d3;
+}
+
+.container {
+  position: relative;
+  width: 1110px;
+  background-color: #cae9ff;
+  padding: 28px 32px;
+  border-radius: 12pt;
+  backdrop-filter: blur(0.4rem);
+  font-family: "Roboto", sans-serif;
+
+}
+.form-additional {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #5fa8d3;
+  color: black;
+}
+
+tr {
+  background-color: #a5d9ff; 
+}
+
+tr:hover {
+  background-color: #87cdff;  
+}
+
+.container h2 {
+  color: #333744;
+  text-align: c enter;
+}
+.container h1 {
+  color: #333744;
+  text-align: center;
+  font-size: 26pt;
+}
+#patientSelect {
+  margin-left: 50%;
+}
+.container div {
+  margin: 20pt;
+}
+input {
+  background-color: #a8dbff;
+  padding: 12px;
+  margin: 10px;
+}
+select {
+  background-color: #a8dbff;
+  padding: 12px;
+  margin-right: 10px;
+}
+.button {
+  cursor: pointer;
+  background-color: null;
+  border: none;
+  padding: 12px;
+  color: white;
+  background-color: #0081cf35;
+  border-radius: 0.3rem;
+  color: black;
+  font-weight: 600;
+}
